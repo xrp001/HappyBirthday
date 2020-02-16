@@ -106,6 +106,27 @@
     <span id="span_dt_dt"></span>
 </p>
 <script language="javascript">
+    
+//--创建页面监听，等待微信端页面加载完毕 触发音频播放
+document.addEventListener('DOMContentLoaded', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    audioAutoPlay();
+});
+//--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+document.addEventListener('touchstart', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+    }
+    audioAutoPlay();
+});
+
     function show_date_time() {
         window.setTimeout("show_date_time()", 1000);
         BirthDay = new Date("3/14/1996");//这个日期是可以修改的
@@ -664,6 +685,6 @@
     }());
     S.init();
 </script>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=22715252&auto=1&height=32"></iframe>
+<audio loop src="http://static.xrp001.tk/happy_birthday.mp3" id="audio" autoplay preload="auto">该浏览器不支持audio属性</audio>
 </body>
 </html>
